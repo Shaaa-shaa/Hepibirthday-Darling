@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Letters Between the Clouds</title>
+
+  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)" />
+  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin />
+  <link
+    href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap)"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="sky" class="sky">
+    <div class="sun"></div>
+    <div id="stars" class="stars"></div>
+    <div id="moon" class="moon" title="moon"></div>
+
+    <div class="cloud cloud-1 cloud-clickable"></div>
+    <div class="cloud cloud-2 cloud-clickable"></div>
+    <div class="cloud cloud-3 cloud-clickable"></div>
+    <div class="cloud cloud-4 cloud-clickable"></div>
+    <div class="cloud cloud-5 cloud-clickable"></div>
+    <div class="cloud cloud-6 cloud-clickable"></div>
+
+    <div class="balloon balloon-1">🩵</div>
+    <div class="balloon balloon-2">☁️</div>
+    <div class="balloon balloon-3">✨</div>
+
+    <button id="paperPlane" class="paper-plane" aria-label="Catch the paper airplane">✈️</button>
+    <div id="bird" class="bird">🕊️</div>
+  </div>
+
+  <div id="sparkles" class="sparkles"></div>
+  <div id="confetti" class="confetti-layer"></div>
+  <div id="fireworks" class="fireworks-layer"></div>
+  <div id="heartRain" class="heart-rain"></div>
+
+  <div id="cloudTransition" class="cloud-transition">
+    <div class="transition-cloud transition-cloud-1"></div>
+    <div class="transition-cloud transition-cloud-2"></div>
+    <div class="transition-cloud transition-cloud-3"></div>
+    <p id="transitionText">Returning to the sky...</p>
+  </div>
+
+  <section id="musicChoice" class="music-choice">
+    <div class="music-card">
+      <div class="music-icon">☁️🩵</div>
+      <h2>This journey feels even sweeter with our song.</h2>
+      <div class="music-actions">
+        <button id="playSongBtn" class="primary-btn">▶ Play Our Song</button>
+        <button id="silentBtn" class="secondary-btn">🤍 Continue in Silence</button>
+      </div>
+      <p class="tiny-note">
+        Music starts only after you choose.
+      </p>
+    </div>
+  </section>
+
+  <div id="musicPlayer" class="music-player hidden">
+    <div class="player-cloud">☁️</div>
+    <button id="toggleMusic" aria-label="Play or pause music">▶</button>
+    <button id="muteMusic" aria-label="Mute or unmute music">🔊</button>
+    <span>Our song 🩵</span>
+  </div>
+
+  <main id="app" class="app">
+    <section id="landing" class="page active">
+      <div class="hero glass">
+        <p class="cake-emoji">🎂</p>
+        <h1>Happy Birthday<br />Darling !🩵</h1>
+        <p class="subtitle">
+          I made a little world just for you.<br />
+          Every letter holds a little piece of my heart.<br />
+          I hope you'll read every single one.
+        </p>
+
+        <div class="envelope hero-envelope" aria-hidden="true">
+          <div class="envelope-back"></div>
+          <div class="letter-peek">💌</div>
+          <div class="envelope-flap"></div>
+          <div class="envelope-front"></div>
+        </div>
+
+        <button id="startBtn" class="primary-btn">💌 Open My First Letter</button>
+      </div>
+    </section>
+
+    <section id="letterOne" class="page">
+      <article class="letter-card glass unfold">
+        <p class="section-kicker">💌 Letter One</p>
+        <h2>Before We Begin</h2>
+        <div class="handwritten">
+          <p>Dear Darlingg 🩵</p>
+          <p>Before you begin reading these little letters...</p>
+          <p>I have one tiny request.</p>
+          <p>Please don't rush through them.</p>
+          <p>I poured a little piece of my heart into every page.</p>
+          <p>Some might make you laugh.</p>
+          <p>Some might make you smile.</p>
+          <p>Maybe one or two might even make you emotional.</p>
+          <p>So take your time.</p>
+          <p>I'll be waiting for you on the next cloud.</p>
+          <p>Love,</p>
+          <p>🧸</p>
+        </div>
+        <button class="primary-btn next-page" data-next="letterTwo">☁️ Open Next Letter</button>
+      </article>
+    </section>
+
+    <section id="letterTwo" class="page">
+      <div class="memory-wrap glass">
+        <p class="section-kicker">💌 Letter Two</p>
+        <h2>Our Journey Begins</h2>
+        <p class="soft-copy">
+          Four little envelopes are floating here. Open them slowly. Each one remembers us.
+        </p>
+
+        <div id="memoryEnvelopeArea" class="memory-envelope-area"></div>
+
+        <div id="memoryReader" class="memory-reader hidden">
+          <h3 id="memoryTitle"></h3>
+          <div id="memoryText" class="handwritten"></div>
+          <button id="nextMemoryBtn" class="primary-btn">🩵 Keep Floating →</button>
+        </div>
+
+        <button id="memoryDoneBtn" class="primary-btn hidden" data-next="letterThree">
+          ☁️ Open Next Letter
+        </button>
+      </div>
+    </section>
+
+    <section id="letterThree" class="page">
+      <div class="notes-page glass">
+        <p class="section-kicker">💌 Letter Three</p>
+        <h2>Tiny Things You'll Probably Never Notice</h2>
+        <p class="soft-copy">
+          Click each tiny note. They have been waiting quietly for you.
+        </p>
+
+        <div id="stickyNotes" class="sticky-grid"></div>
+
+        <p id="stickySecret" class="secret-message hidden">
+          Every wish I make somehow leads back to you.
+        </p>
+
+        <button class="primary-btn next-page" data-next="letterFour">☁️ Open Next Letter</button>
+      </div>
+    </section>
+
+    <section id="letterFour" class="page">
+      <div class="thanks-page glass">
+        <p class="section-kicker">💌 Letter Four</p>
+        <h2>Things I Don't Say Enough</h2>
+
+        <div class="thanks-grid">
+          <div class="thank-note handwritten"><strong>Thank you.</strong><br />For making me feel safe.</div>
+          <div class="thank-note handwritten"><strong>Thank you.</strong><br />For choosing me every day.</div>
+          <div class="thank-note handwritten"><strong>Thank you.</strong><br />For being patient.</div>
+          <div class="thank-note handwritten"><strong>Thank you.</strong><br />For always making me smile.</div>
+          <div class="thank-note handwritten"><strong>Thank you.</strong><br />For becoming my safe place.</div>
+        </div>
+
+        <button class="primary-btn next-page" data-next="letterFive">☁️ Open Next Letter</button>
+      </div>
+    </section>
+
+    <section id="letterFive" class="page calm-page">
+      <article class="letter-card glass long-letter">
+        <p class="section-kicker">💌 Letter Five</p>
+        <h2>A Letter the Distance Will Never Read</h2>
+
+        <div class="handwritten">
+          <p>Sometimes I think people believe missing someone is about the big moments.</p>
+          <p>But for me...</p>
+          <p>It's always the little things.</p>
+          <p>I miss your hugs.</p>
+          <p>I miss the way you'd naturally reach for my hand.</p>
+          <p>I miss sitting beside you, even if we weren't saying anything at all.</p>
+          <p>I miss looking over and knowing you're right there.</p>
+          <p>Distance has taught me something I never expected.</p>
+          <p>It's possible to miss someone in a hundred tiny ways every single day.</p>
+          <p>Some days, I wonder how many hugs we've had to postpone because of the distance.</p>
+          <p>How many walks we haven't taken.</p>
+          <p>How many quiet moments we could have shared if you were just a little closer.</p>
+          <p>But then I smile...</p>
+          <p>Because I know this distance is only temporary.</p>
+          <p>One day, we'll get to make up for every hug we've missed, every hand we've wanted to hold and every moment we've had to imagine instead of live.</p>
+          <p>Until then, I'll keep looking forward to every hello, holding on to every memory and reminding myself that every day apart is one day closer to being together again.</p>
+          <p>And I think...</p>
+          <p>That's something worth waiting for🩵🧸</p>
+        </div>
+
+        <button class="primary-btn next-page" data-next="letterSix">☁️ Open Next Letter</button>
+      </article>
+    </section>
+
+    <section id="letterSix" class="page">
+      <div class="postcard-page glass">
+        <p class="section-kicker">💌 Letter Six</p>
+        <h2>Birthday Wishes</h2>
+
+        <div class="postcard-grid">
+          <div class="postcard handwritten">I hope life is kind to you.</div>
+          <div class="postcard handwritten">I hope you achieve every dream.</div>
+          <div class="postcard handwritten">I hope your heart always stays light.</div>
+          <div class="postcard handwritten">I hope you never stop smiling.</div>
+          <div class="postcard handwritten">I hope you'll always know how loved you are.</div>
+        </div>
+
+        <button class="primary-btn next-page" data-next="letterSeven">☁️ Open Next Letter</button>
+      </div>
+    </section>
+
+    <section id="letterSeven" class="page">
+      <div class="cake-page glass">
+        <p class="section-kicker">🎂 Letter Seven</p>
+        <h2>Make A Wish</h2>
+
+        <div id="cake" class="cake">
+          <div class="candles" id="candles"></div>
+          <div class="cake-top"></div>
+          <div class="cake-body">26</div>
+          <div class="cake-plate"></div>
+        </div>
+
+        <button id="blowCandlesBtn" class="primary-btn">🕯 Blow The Candles</button>
+        <button id="afterCakeBtn" class="primary-btn hidden" data-next="finalLetter">
+          🌅 Open Final Letter
+        </button>
+      </div>
+    </section>
+
+    <section id="finalLetter" class="page">
+      <article class="letter-card glass final-card">
+        <p class="section-kicker">🌅 Final Letter</p>
+        <div class="wax-envelope">
+          <div class="wax-seal">💙</div>
+        </div>
+
+        <h2>For You</h2>
+        <div id="finalTypewriter" class="handwritten typewriter-box"></div>
+
+        <div id="finalMessage" class="final-message hidden">
+          <div class="teddy">🧸🩵</div>
+          <p>
+            Thank you for reading every little piece of my heart.<br />
+            I hope this little sky made you smile.
+          </p>
+          <p class="again-line">
+            Some letters are simply too precious to read only once.
+          </p>
+          <button id="restartBtn" class="primary-btn">🔁 Read Them Again ☁️</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <audio id="song" preload="none"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
