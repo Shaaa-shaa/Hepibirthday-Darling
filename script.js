@@ -6,7 +6,7 @@
 
 
 */
-const SONG_URL = "[https://youtu.be/c9t-EFq6feA?si=PPBIxmKZ9_DJgzvd=)";
+const SONG_URL = "[https://www.masstamilan.dev/downloader/Vorn9rvGBXmAWKpQzrHplw/1783189043/d128_cdn/8122/MjAwMTplNjg6NTQwNDoyMGU2OmUwMmE6NDEzMDo2ODc1OjgwZGE=)";
 // ===== MUSIC PLAYER =====
 function setupMusicPlayer() {
     const playBtn = document.getElementById('playMusicBtn');
