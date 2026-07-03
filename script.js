@@ -4,12 +4,92 @@
   Letters Between the Clouds
   HTML, CSS, and vanilla JavaScript only.
 
-  Music note:
-  Replace SONG_URL with an authorized hosted audio source.
-  Direct download links may fail due to CORS, expiry, or copyright restrictions.
+
 */
 const SONG_URL = "[https://www.masstamilan.dev/downloader/Vorn9rvGBXmAWKpQzrHplw/1783189043/d128_cdn/8122/MjAwMTplNjg6NTQwNDoyMGU2OmUwMmE6NDEzMDo2ODc1OjgwZGE=)";
+// ===== MUSIC PLAYER =====
+function setupMusicPlayer() {
+    const playBtn = document.getElementById('playMusicBtn');
+    const silenceBtn = document.getElementById('silenceBtn');
+    const togglePlayBtn = document.getElementById('togglePlayBtn');
+    const muteBtn = document.getElementById('muteBtn');
 
+    playBtn.addEventListener('click', () => {
+        initYouTubePlayer();
+        playBtn.parentElement.style.display = 'none';
+        document.getElementById('musicControls').style.display = 'flex';
+        state.musicPlaying = true;
+    });
+
+    silenceBtn.addEventListener('click', () => {
+        document.getElementById('musicPlayer').style.opacity = '0.3';
+        silenceBtn.style.display = 'none';
+        playBtn.style.display = 'none';
+    });
+
+    togglePlayBtn.addEventListener('click', () => {
+        if (window.youtubePlayer) {
+            const state = window.youtubePlayer.getPlayerState();
+            if (state === 1) {
+                window.youtubePlayer.pauseVideo();
+                togglePlayBtn.textContent = '▶';
+            } else {
+                window.youtubePlayer.playVideo();
+                togglePlayBtn.textContent = '⏸';
+            }
+        }
+    });
+
+    muteBtn.addEventListener('click', () => {
+        if (window.youtubePlayer) {
+            if (window.youtubePlayer.isMuted()) {
+                window.youtubePlayer.unMute();
+                muteBtn.textContent = '🔊';
+            } else {
+                window.youtubePlayer.mute();
+                muteBtn.textContent = '🔇';
+            }
+        }
+    });
+}
+
+function initYouTubePlayer() {
+    // Load YouTube IFrame API
+    if (!window.YT) {
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(tag);
+    }
+
+    // Wait for API to load
+    const checkAPI = setInterval(() => {
+        if (window.YT && window.YT.Player) {
+            clearInterval(checkAPI);
+            createYouTubePlayer();
+        }
+    }, 100);
+}
+
+function createYouTubePlayer() {
+    window.youtubePlayer = new YT.Player('youtubePlayer', {
+        height: '0',
+        width: '0',
+        videoId: 'eIo2r7dM7FU', // En Jeevan - Theri
+        events: {
+            onReady: onPlayerReady,
+        },
+        playerVars: {
+            autoplay: 1,
+            controls: 0,
+            showinfo: 0,
+            modestbranding: 1,
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    event.target.setVolume(50);
+    event.target.playVideo();
 const pages = Array.from(document.querySelectorAll(".page"));
 const sky = document.getElementById("sky");
 const stars = document.getElementById("stars");
